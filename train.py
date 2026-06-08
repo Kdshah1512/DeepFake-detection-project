@@ -121,7 +121,6 @@ def get_train_config() -> Config:
     config.run_dir = "runs/train"
     config.wandb = False
 
-    # 🔴 FIX: reduce workers (Windows-safe)
     config.num_workers = 0
 
     config.devices = [0]
@@ -234,7 +233,6 @@ def entry(train: bool = False, test: bool = False, debug: bool = False, **kwargs
     main(config, train)
 
 
-# ✅ FIX: Windows-safe multiprocessing guard
 if __name__ == "__main__":
     import multiprocessing as mp
 
