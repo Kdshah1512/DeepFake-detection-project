@@ -61,7 +61,8 @@ EAR = (||p2−p6|| + ||p3−p5||) / (2 × ||p1−p4||)
 ```
 .
 ├── train.py                    # Main entry point — training and testing
-├── ear_baseline.py             # EAR extraction and evaluation pipeline
+├── ear_only_classifiers.py     # EAR classifier pipeline
+├── evaluate_ear_only.py        # EAR evaluation pipeline
 ├── prepare_dataset.py          # Face extraction pipeline (MTCNN)
 ├── download.py                 # FaceForensics++ official downloader
 ├── data_conversion.sh          # CDFv2 manifest generation script
@@ -280,7 +281,7 @@ The test script loads the best checkpoint (`best_mAP.ckpt`) and saves:
 ### EAR Baseline
 
 ```bash
-python ear_baseline.py
+python evaluate_ear_only.py
 ```
 
 ---
