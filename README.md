@@ -54,7 +54,7 @@ The EAR baseline serves as an interpretable physiological reference model, enabl
 EAR = (||p2−p6|| + ||p3−p5||) / (2 × ||p1−p4||)
 ```
 
----
+
 
 ## Repository Structure
 
@@ -67,6 +67,7 @@ EAR = (||p2−p6|| + ||p3−p5||) / (2 × ||p1−p4||)
 ├── download.py                 # FaceForensics++ official downloader
 ├── data_conversion.sh          # CDFv2 manifest generation script
 ├── req.txt                     # Python dependencies
+|──mcnemar.py                  # McNemar's exact test for backbone comparison
 │
 ├── src/
 │   ├── config.py               # Pydantic-based configuration system
@@ -332,6 +333,16 @@ The framework supports:
 - ROC Curves
 - Precision–Recall Curves
 - Confusion Matrix Analysis
+
+- ## Statistical Testing
+
+McNemar's exact test was applied to video-level binary predictions on the 120 Celeb-DF-v2 test videos.
+
+| Comparison | p-value | Significant? |
+|---|---|---|
+| ViT-B/16 vs ViT-B/32 | 0.0007 | Yes (p < 0.001) |
+| ViT-B/16 vs ViT-L/14 | 0.4545 | No |
+| ViT-B/32 vs ViT-L/14 | 0.0002 | Yes (p < 0.001) |
 
 ---
 
