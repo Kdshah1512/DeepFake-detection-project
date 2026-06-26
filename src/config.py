@@ -85,18 +85,16 @@ class Config(Validation, validate_assignment=True):
     run_name: str = "exp-name-1"  # Name of the run
     run_dir: str = "runs/exp"  # Directory to save the run
     seed: int = 42  # Random seed for reproducibility
-    throw_exception_if_run_exists: bool = False  # Throw an exception if the run directory exists
-
+    throw_exception_if_run_exists: bool = False  
     # Model configuration
     num_classes: int = 2
-    checkpoint: None | str = None  # Path to a checkpoint to load
+    checkpoint: None | str = None  
     backbone: str = Backbone.CLIP_B_32  # Backbone model to use
-    freeze_feature_extractor: bool = True  # Freeze the feature extractor
-    unfreeze_layers: list[str] = []  # Layers to unfreeze
-    head: str = Head.Linear  # Head model to use
-    proj_feat_dim: int = 128  # Dimension of projected features
-    normalize_features: bool = False  # Normalize features of penultimate layer
-
+    freeze_feature_extractor: bool = True  
+    unfreeze_layers: list[str] = [] 
+    head: str = Head.Linear
+    proj_feat_dim: int = 128  
+    normalize_features: bool = False 
     # PEFT configuration
     peft: PEFT = PEFT()
 
@@ -105,34 +103,33 @@ class Config(Validation, validate_assignment=True):
     slerp_feature_augmentation_range: list[float] = [0.0, 1.0]  # Range of the Slerp feature augmentation
 
     # Data configuration
-    trn_files: list[str] | dict[str, list[str]] = []  # Files containing paths to training samples
-    val_files: list[str] | dict[str, list[str]] = []  # Files containing paths to validation samples
-    tst_files: list[str] | dict[str, list[str]] = []  # Files containing paths to test samples
-    limit_trn_files: None | int = None  # Limit the number of training files
-    limit_val_files: None | int = None  # Limit the number of validation files
-    limit_tst_files: None | int = None  # Limit the number of test files
-    binary_labels: bool = True  # Use binary labels
+    trn_files: list[str] | dict[str, list[str]] = [] 
+    val_files: list[str] | dict[str, list[str]] = []  
+    tst_files: list[str] | dict[str, list[str]] = []  
+    limit_trn_files: None | int = None  
+    limit_val_files: None | int = None  
+    limit_tst_files: None | int = None  
+    binary_labels: bool = True  
 
     # Optimization configuration
-    lr: float = 0.0003  # Learning rate (initial / base)
-    min_lr: float = 1e-6  # Minimum learning rate
+    lr: float = 0.0003  
+    min_lr: float = 1e-6  
     lr_scheduler: None | Scheduler = "cosine"  # Learning rate scheduler
-    weight_decay: float = 0.0  # AdamW weight decay
-    betas: list[float] = [0.9, 0.999]  # AdamW betas
-    loss: Loss = Loss()  # Loss function to use
-
+    weight_decay: float = 0.0  
+    betas: list[float] = [0.9, 0.999]  
+    loss: Loss = Loss() 
     # Training configuration (managed by Lightning Trainer)
-    max_epochs: int = 1  # Number of epochs to train
-    batch_size: int = 512  # Required batch size to perform one step
-    mini_batch_size: int = 512  # Mini batch size per device
-    num_workers: int = 12  # Number of workers for the DataLoader
-    devices: list[int] | str | int = "auto"  # Devices to use for training
-    precision: Precision = "bf16-mixed"  # Precision for the model
-    fast_dev_run: int | bool = False  # Run a fast development run
-    overfit_batches: int | float = 0.0  # Overfit on a subset of the data
-    limit_train_batches: None | int | float = None  # Limit the number of training batches
-    limit_test_batches: None | int | float = None  # Limit the number of test batches
-    limit_val_batches: None | int | float = None  # Limit the number of validation batches
+    max_epochs: int = 1  
+    batch_size: int = 512  
+    mini_batch_size: int = 512
+    num_workers: int = 12 
+    devices: list[int] | str | int = "auto" 
+    precision: Precision = "bf16-mixed" 
+    fast_dev_run: int | bool = False  
+    overfit_batches: int | float = 0.0  
+    limit_train_batches: None | int | float = None  
+    limit_test_batches: None | int | float = None  
+    limit_val_batches: None | int | float = None  
     deterministic: None | bool = None  # Set random seed for reproducibility
     detect_anomaly: bool = False  # Detect anomalies in the model
     checkpoint_for_testing: str = "best_mAP"  # Checkpoint to use for testing
